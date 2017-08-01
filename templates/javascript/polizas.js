@@ -105,7 +105,7 @@ $(document).ready(function(){
 			$("[action=modificar]").click(function(){
 				var el = jQuery.parseJSON($(this).attr("datos"));
 				
-				$("#id").val(el.idAseguradora);
+				$("#id").val(el.idPoliza);
 				$("#txtAsegurado").val(el.asegurado);
 				$("#txtAsegurado").attr("nombre", el.asegurado);
 				$("#txtAsegurado").attr("identificador", el.idAsegurado);

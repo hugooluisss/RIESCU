@@ -17,7 +17,7 @@ define('LAYOUT_LOGIN', 'layout/login.tpl');
 $conf['inicio'] = array(
 	'descripcion' => '',
 	'seguridad' => false,
-	'js' => array('usuario.class.js', 'empresa.class.js'),
+	'js' => array('usuario.class.js'),
 	'jsTemplate' => array('login.js'),
 	'capa' => LAYOUT_LOGIN);
 

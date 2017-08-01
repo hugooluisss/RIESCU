@@ -72,60 +72,6 @@ switch($objModulo->getId()){
 				$obj->setTipo($_POST['tipo']);
 				$band = $obj->guardar();
 				
-				if ($_POST['id'] == ''){
-					if ($band and $_POST['empresa'] <> ''){
-						$empresa = new TEmpresa($_POST['empresa']);
-						$empresa->addUsuario($obj->getId());
-					}else{
-						global $userSesion;
-						if ($userSesion->getEmpresa() <> ''){
-							$empresa = new TEmpresa($userSesion->getEmpresa());
-							$empresa->addUsuario($obj->getId());
-						}
-					}
-				}
-				
-				$email = !isset($_POST['sendmail'])?true:$_POST['sendmail'];
-				
-				if ($obj->getEmpresa() <> '' and $_POST['id'] == '' and $email){
-					global $ini;
-						$email = new TMail();
-						$email->setTema("Registro de usuario");
-						$email->addDestino($obj->getEmail());
-						
-						$datos = array();
-						$datos['usuario.nombre'] = $obj->getNombre();
-						$datos['usuario.correo'] = $obj->getEmail();
-						$datos['usuario.pass'] = $obj->getPass();
-						
-						switch($obj->getIdTipo()){
-							case 2:
-								$s = '<li>Actualizar los datos de tu empresa</li>';
-								$s .= '<li>Configurar tus métodos de cobro</li>';
-								$s .= '<li>Crear mas cuentas de usuario</li>';
-								$s .= '<li>Crear tu próximo bazar o mercado</li>';
-								$s .= '<li>Dar de alta tus productos e inventario de manera sencilla</li>';
-								$s .= '<li>Realizar ventas</li>';
-							break;
-							case 3:
-								$s = '<li>Realizar ventas</li>';
-								$s .= '<li>Agregar nuevos productos</li>';
-								$s .= '<li>Crear nuevas cuentas de clientes</li>';
-							break;
-							case 4:
-								$s = '<li>Dar de alta tus productos e inventario de manera sencilla</li>';
-							break;
-							default:
-								$s = "<li>Sin roles</li>";
-						}
-						
-						$datos['usuario.roles'] = $s;
-						
-						$email->setBodyHTML(utf8_decode($email->construyeMail(file_get_contents("repositorio/mail/nuevoUsuario.html"), $datos)));
-						
-						$bandEmail = $email->send();
-				}
-				
 				$smarty->assign("json", array("band" => $band));
 			break;
 			case 'del':

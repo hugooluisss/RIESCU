@@ -20,7 +20,7 @@
 								<button type="button" class="btn btn-primary btn-xs" action="cargos" title="Definición de cargos" datos='{$row.json}' data-toggle="modal" data-target="#winCargos"><i class="fa fa-money"></i></button>
 								
 								<button type="button" class="btn btn-success btn-xs" action="modificar" title="Modificar" datos='{$row.json}'><i class="fa fa-pencil"></i></button>
-								<button type="button" class="btn btn-danger btn-xs" action="eliminar" title="Eliminar" identificador="{$row.idAseguradora}"><i class="fa fa-times"></i></button>
+								<button type="button" class="btn btn-danger btn-xs" action="eliminar" title="Eliminar" identificador="{$row.idPoliza}"><i class="fa fa-times"></i></button>
 							</div>
 						</td>
 					</tr>

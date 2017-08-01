@@ -248,24 +248,5 @@ class TUsuario{
 		
 		return $rs?true:false;
 	}
-	
-	/**
-	* Retorna el identificador de la empresa
-	*
-	* @autor Hugo
-	* @access public
-	* @return string Texto
-	*/
-	
-	public function getEmpresa(){
-		if ($this->getId() == '') return false;
-		
-		$db = TBase::conectaDB();
-		$sql = "select idEmpresa from usuarioempresa where idUsuario = ".$this->getId();
-		$rs = $db->query($sql) or errorMySQL($db, $sql);
-		$row = $rs->fetch_assoc();
-		
-		return $row['idEmpresa'];
-	}
 }
 ?>
