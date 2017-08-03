@@ -11,7 +11,9 @@ class TCargo{
 	private $idPoliza;
 	private $requerimiento;
 	private $vencimiento;
+	private $emision;
 	private $monto;
+	private $numero;
 	public $estado;
 	
 	/**
@@ -23,6 +25,7 @@ class TCargo{
 	*/
 	public function TCargo($id = ''){
 		$this->estado = new TEstado(1);
+		$this->numero = 0;
 		$this->setId($id);		
 		return true;
 	}
@@ -120,6 +123,33 @@ class TCargo{
 	}
 	
 	/**
+	* Establece la fecha de emision
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar por default es 2 que hace referencia a doctor
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setEmision($val = ''){
+		$this->emision = $val == ''?date("Y-m-d"):$val;
+		
+		return true;
+	}
+	
+	/**
+	* Retorna la fecha de emision
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getEmision(){
+		return $this->emision == ''?date('Y-m-d'):$this->emision;
+	}
+	
+	/**
 	* Establece el monto
 	*
 	* @autor Hugo
@@ -143,6 +173,32 @@ class TCargo{
 	
 	public function getMonto(){
 		return $this->monto;
+	}
+	
+	/**
+	* Establece el número de pago
+	*
+	* @autor Hugo
+	* @access public
+	* @param string $val Valor a asignar por default es 2 que hace referencia a doctor
+	* @return boolean True si se realizó sin problemas
+	*/
+	
+	public function setNumero($val = 0){
+		$this->numero = $val;
+		return true;
+	}
+	
+	/**
+	* Retorna el el número
+	*
+	* @autor Hugo
+	* @access public
+	* @return string Texto
+	*/
+	
+	public function getNumero(){
+		return $this->numero;
 	}
 	
 	/**
@@ -174,10 +230,12 @@ class TCargo{
 		
 		$sql = "UPDATE cargo
 			SET
+				emision = '".$this->getEmision()."',
 				requerimiento = '".$this->getRequerimiento()."',
 				vencimiento = '".$this->getVencimiento()."',
 				monto = ".$this->getMonto().",
-				idEstado = ".$this->estado->getId()."
+				idEstado = ".$this->estado->getId().",
+				numero = ".$this->getNumero()."
 			WHERE idCargo = ".$this->getId();
 			
 		$rs = $db->query($sql) or errorMySQL($db, $sql);

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-31 11:54:29
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-01 14:03:16
          compiled from "templates/plantillas/modulos/reportes/listaCargos.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:536995300597f5a32b37373-94635565%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '018f87790fa888c4bf0b6d2fe5223c9e59cbc911' => 
     array (
       0 => 'templates/plantillas/modulos/reportes/listaCargos.tpl',
-      1 => 1501520039,
+      1 => 1501614194,
       2 => 'file',
     ),
   ),
@@ -29,14 +29,21 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<table id="tblDatos" class="table table-bordered table-hover">
 			<thead>
 				<tr>
-					<th>Número</th>
-					<th>Requerimiento</th>
-					<th>NIT</th>
 					<th>Asegurado</th>
+					<th>Domicilio</th>
+					<th>NIT</th>
 					<th>Aseguradora</th>
-					<th>Estado</th>
-					<th>Monto</th>
+					<th>Req</th>
+					<th>Emisión</th>
+					<th>Póliza</th>
+					<th>Número</th>
 					<th>Vencimiento</th>
+					<th>Estado</th>
+					<th>Forma de pago</th>
+					<th>Agente</th>
+					<th>Monto</th>
+					<th>Pago</th>
+					<th>Entrega de factura</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -49,15 +56,23 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 ">
 						<td style="border-left: 5px solid <?php echo $_smarty_tpl->tpl_vars['row']->value['color'];?>
 " title="<?php echo $_smarty_tpl->tpl_vars['row']->value['estado'];?>
-"><?php echo $_smarty_tpl->tpl_vars['row']->value['numero'];?>
+"><?php echo $_smarty_tpl->tpl_vars['row']->value['asegurado'];?>
 </td>
-						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['requerimiento'];?>
+						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['direccion'];?>
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['nit'];?>
 </td>
-						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['asegurado'];?>
-</td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['aseguradora'];?>
+</td>
+						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['requerimiento'];?>
+</td>
+						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['emision'];?>
+</td>
+						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['poliza'];?>
+</td>
+						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['numero'];?>
+</td>
+						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['vencimiento'];?>
 </td>
 						<td style="color: <?php echo $_smarty_tpl->tpl_vars['row']->value['color'];?>
 ">
@@ -70,9 +85,15 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 							<?php }?>
 							</small>
 						</td>
+						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['formaPago'];?>
+</td>
+						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['usuario'];?>
+</td>
 						<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['monto'];?>
 </td>
-						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['vencimiento'];?>
+						<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['fechaPago'];?>
+</td>
+						<td class="text-right"><?php echo $_smarty_tpl->tpl_vars['row']->value['fechaFactura'];?>
 </td>
 					</tr>
 				<?php } ?>

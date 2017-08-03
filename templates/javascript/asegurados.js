@@ -15,9 +15,27 @@ $(document).ready(function(){
 		debug: true,
 		rules: {
 			txtNombre: "required",
-			txtNIT: "required"
+			txtNIT: {
+				required: true,
+				remote: {
+					url: "casegurados",
+					type: "post",
+					data: {
+						"action": "validaNIT",
+						"asegurado": function(){
+							return $("#id").val()
+						},
+						"movil": 1
+					}
+				}
+			}
 		},
 		wrapper: 'span', 
+		messages: {
+			txtNIT: {
+				remote: "El NIT ya existe con otro asegurado"
+			}
+		},
 		submitHandler: function(form){
 			var obj = new TAsegurado;
 			obj.add({

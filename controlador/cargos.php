@@ -38,16 +38,17 @@ switch($objModulo->getId()){
 				$obj->setRequerimiento($_POST['requerimiento']);
 				$obj->setVencimiento($_POST['vencimiento']);
 				$obj->setMonto($_POST['monto']);
+				$obj->setNumero($_POST['numero']);
+				$obj->setEmision($_POST['emision']);
 				
-				$poliza = new TPoliza($_POST['poliza']);
-				$fPoliza = new DateTime($poliza->getEmision());
+				$fPoliza = new DateTime($_POST['emision']);
 				$fVencimiento = new DateTime($_POST['vencimiento']);
 				$interval = $fPoliza->diff($fVencimiento);
 				
 				if ($interval->format('%r%a') < 0)
 					$smarty->assign("json", array(
 						"band" => false, 
-						"mensaje" => "La fecha de vencimiento no puede ser anterior a la fecha de emision de la poliza (".$poliza->getEmision().")", 
+						"mensaje" => "La fecha de vencimiento no puede ser anterior a la fecha de emision de la poliza (".$_POST['emision'].")", 
 						"dias" => $interval->format('%r%a')
 					));
 				else

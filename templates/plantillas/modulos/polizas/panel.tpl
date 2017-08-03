@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Polizas</h1>
+		<h1 class="page-header">Requerimientos</h1>
 	</div>
 </div>
 
@@ -20,27 +20,45 @@
 				<div class="box-body">
 					<div class="form-horizontal">
 						<div class="form-group">
-							<label class="col-sm-2 text-right" for="txtNumero">Número</label>
+							<label class="col-sm-2 text-right" for="txtAsegurado">NIT del Asegurado</label>
+							<div class="col-sm-3">
+								<input class="form-control input-sm" id="txtAsegurado" name="txtAsegurado" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-10 col-sm-offset-2">
+								<input class="form-control input-sm" readonly="true" disabled="true" id="txtNombreAsegurado" name="txtNombreAsegurado" placeholder="Nombre" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-10 col-sm-offset-2">
+								<input class="form-control input-sm" readonly="true" disabled="true" id="txtDireccionAsegurado" name="txtDireccionAsegurado" placeholder="Dirección" />
+							</div>
+						</div>
+						<hr />
+						<div class="form-group">
+							<label class="col-sm-2 text-right" for="txtNumero">Número de póliza</label>
 							<div class="col-sm-3">
 								<input class="form-control input-sm" id="txtNumero" name="txtNumero" />
 							</div>
 						</div>
+						<!--
 						<div class="form-group">
 							<label class="col-sm-2 text-right" for="txtEmision">Fecha de emisión</label>
 							<div class="col-sm-3">
 								<input class="form-control input-sm" id="txtEmision" name="txtEmision" />
 							</div>
 						</div>
-						<div class="form-group">
-							<label class="col-sm-2 text-right" for="txtAsegurado">Asegurado</label>
-							<div class="col-sm-10">
-								<input class="form-control input-sm" id="txtAsegurado" name="txtAsegurado" />
-							</div>
-						</div>
+						-->
 						<div class="form-group">
 							<label class="col-sm-2 text-right" for="txtAseguradora">Aseguradora</label>
 							<div class="col-sm-10">
-								<input class="form-control input-sm" id="txtAseguradora" name="txtAseguradora" />
+								<select class="form-control" id="selAseguradora" name="selAseguradora">
+									<option value="">Selecciona</option>
+									{foreach from=$aseguradoras item="row"}
+										<option value="{$row.idAseguradora}">{$row.nombre}</option>
+									{/foreach}
+								</select>
 							</div>
 						</div>
 						<div class="form-group">

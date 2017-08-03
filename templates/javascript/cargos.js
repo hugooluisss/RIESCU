@@ -1,5 +1,6 @@
 $(document).ready(function(){
-	$("#txtVencimiento").datepicker({dateFormat: 'yy-mm-dd'})
+	$("#txtEmision").datepicker({dateFormat: 'yy-mm-dd'});
+	$("#txtVencimiento").datepicker({dateFormat: 'yy-mm-dd'});
 	
 	$('#winAddCargos').on('show.bs.modal', function(e){
 		$("#winCargos").modal("hide");
@@ -18,24 +19,28 @@ $(document).ready(function(){
 				number: true
 			},
 			txtVencimiento: "required",
-			txtRequerimiento: "required"
+			txtRequerimiento: "required",
+			txtNumeroPago: "required",
+			txtEmision: "required"
 		},
 		wrapper: 'span', 
 		submitHandler: function(form){
 			var obj = new TCargo;
 			obj.add({
-				id: $("#id").val(), 
+				id: $("#idCargo").val(), 
 				monto: $("#txtMonto").val(), 
 				vencimiento: $("#txtVencimiento").val(), 
 				requerimiento: $("#txtRequerimiento").val(),
 				poliza: $('#winCargos').attr("poliza"),
+				numero: $("#txtNumeroPago").val(),
+				emision: $("#txtEmision").val(),
 				fn: {
 					after: function(datos){
 						if (datos.band){
 							$("#frmCargos").get(0).reset();
 							$('#winAddCargos').modal("hide");
 						}else{
-							alert(datos.mensaje == ''?"No se pudo guardar el registro":datos.mensaje);
+							alert(datos.mensaje == '' || datos.mensaje == undefined?"No se pudo guardar el registro":datos.mensaje);
 						}
 					}
 				}
@@ -45,6 +50,7 @@ $(document).ready(function(){
     });
 	
 	$('#winCargos').on('shown.bs.modal', function(e){
+		$(this).find("#spnTitulo").text($(this).attr("numero"));
 		getLista();
 	});
 	
@@ -53,6 +59,17 @@ $(document).ready(function(){
 			"poliza": $('#winCargos').attr("poliza"),
 		}, function(data) {
 			$("#dvListaCargos").html(data);
+			
+			$("[action=modificarCargo]").click(function(){
+				var el = jQuery.parseJSON($(this).attr("datos"));
+				
+				$("#winAddCargos").find("#idCargo").val(el.idCargo);
+				$("#winAddCargos").find("#txtRequerimiento").val(el.requerimiento);
+				$("#winAddCargos").find("#txtEmision").val(el.emision);
+				$("#winAddCargos").find("#txtVencimiento").val(el.vencimiento);
+				$("#winAddCargos").find("#txtMonto").val(el.monto);
+				$("#winAddCargos").find("#txtNumeroPago").val(el.numero);
+			});
 			
 			$("[action=cancelarCargo]").click(function(){
 				if(confirm("¿Seguro de querer cancelar?")){
@@ -114,7 +131,7 @@ $(document).ready(function(){
 	});
 	
 	$("#txtFechaPago").datepicker({dateFormat: 'yy-mm-dd'});
-    $("#txtFechaFactura").datepicker({dateFormat: 'yy-mm-dd', inline: true});
+    $("#txtFechaFactura").datepicker({dateFormat: 'yy-mm-dd'});
     
     $("#frmPagar").validate({
 		debug: true,

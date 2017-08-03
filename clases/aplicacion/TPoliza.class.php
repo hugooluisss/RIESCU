@@ -9,7 +9,6 @@
 class TPoliza{
 	private $idPoliza;
 	private $registro;
-	private $emision;
 	private $numero;
 	public $asegurado;
 	public $aseguradora;
@@ -103,34 +102,6 @@ class TPoliza{
 	public function getRegistro(){
 		return $this->registro == ''?date('Y-m-d'):$this->registro;
 	}
-	
-	/**
-	* Establece la fecha de emision
-	*
-	* @autor Hugo
-	* @access public
-	* @param string $val Valor a asignar por default es 2 que hace referencia a doctor
-	* @return boolean True si se realizó sin problemas
-	*/
-	
-	public function setEmision($val = ''){
-		$this->emision = $val == ''?date("Y-m-d"):$val;
-		
-		return true;
-	}
-	
-	/**
-	* Retorna la fecha de emision
-	*
-	* @autor Hugo
-	* @access public
-	* @return string Texto
-	*/
-	
-	public function getEmision(){
-		return $this->emision == ''?date('Y-m-d'):$this->emision;
-	}
-
 	
 	/**
 	* Establece el número de póliza

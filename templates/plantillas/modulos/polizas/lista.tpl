@@ -3,7 +3,7 @@
 		<table id="tblDatos" class="table table-bordered table-hover">
 			<thead>
 				<tr>
-					<th>Número</th>
+					<th>Póliza</th>
 					<th>Asegurado</th>
 					<th>Aseguradora</th>
 					<th>&nbsp;</th>

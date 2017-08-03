@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-31 11:40:49
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-02 13:53:58
          compiled from "templates/plantillas/modulos/cargos/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1952531044597a9b0812ef71-14167309%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fab89332932bd722266f425579cfdafef704de45' => 
     array (
       0 => 'templates/plantillas/modulos/cargos/lista.tpl',
-      1 => 1501519244,
+      1 => 1501699805,
       2 => 'file',
     ),
   ),
@@ -27,6 +27,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php if ($_valid && !is_callable('content_597a9b081d16b8_52634591')) {function content_597a9b081d16b8_52634591($_smarty_tpl) {?><table id="tblCargos" class="table table-bordered table-hover">
 	<thead>
 		<tr>
+			<th>Número</th>
 			<th>Vence</th>
 			<th>Estado</th>
 			<th>Requerimiento</th>
@@ -43,7 +44,9 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 			<tr json='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '>
 				<td style="border-left: 3px solid <?php echo $_smarty_tpl->tpl_vars['row']->value['color'];?>
-"><?php echo $_smarty_tpl->tpl_vars['row']->value['vencimiento'];?>
+"><?php echo $_smarty_tpl->tpl_vars['row']->value['numero'];?>
+</td>
+				<td><?php echo $_smarty_tpl->tpl_vars['row']->value['vencimiento'];?>
 </td>
 				<td style="color: <?php echo $_smarty_tpl->tpl_vars['row']->value['color'];?>
 "><?php echo $_smarty_tpl->tpl_vars['row']->value['estado'];?>
@@ -55,6 +58,9 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 				<td style="text-align: right">
 					<?php if (in_array($_smarty_tpl->tpl_vars['row']->value['idEstado'],array(1,2,3))){?>
 					<div class="btn-group">
+						<button type="button" class="btn btn-success btn-xs" action="modificarCargo" title="Modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+' data-toggle="modal" data-target="#winAddCargos"><i class="fa fa-pencil"></i></button>
+						
 						<button type="button" class="btn btn-primary btn-xs" action="pagarCargo" title="Pagar" identificador="<?php echo $_smarty_tpl->tpl_vars['row']->value['idCargo'];?>
 " data-toggle="modal" data-target="#winPagar"><i class="fa fa-credit-card"></i></button>
 						<button type="button" class="btn btn-warning btn-xs" action="cancelarCargo" title="Cancelar" identificador="<?php echo $_smarty_tpl->tpl_vars['row']->value['idCargo'];?>

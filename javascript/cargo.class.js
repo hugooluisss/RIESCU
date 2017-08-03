@@ -10,6 +10,8 @@ TCargo = function(){
 				"requerimiento": datos.requerimiento, 
 				"vencimiento": datos.vencimiento,
 				"monto": datos.monto,
+				"numero": datos.numero,
+				"emision": datos.emision,
 				"action": "add"
 			}, function(data){
 				if (data.band == 'false')

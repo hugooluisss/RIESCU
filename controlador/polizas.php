@@ -11,14 +11,23 @@ switch($objModulo->getId()){
 			array_push($datos, $row);
 		}
 		$smarty->assign("usuarios", $datos);
+		
+		$rs = $db->query("select * from aseguradora a where a.visible = true");
+		$datos = array();
+		while($row = $rs->fetch_assoc()){
+			$row['json'] = json_encode($row);
+			
+			array_push($datos, $row);
+		}
+		$smarty->assign("aseguradoras", $datos);
 	break;
 	case 'listaPolizas':
 		$db = TBase::conectaDB();
 		global $userSesion;
 		if ($userSesion->getIdTipo() == 1)
-			$sql = "select a.*, b.nombre as asegurado, c.nombre as aseguradora from poliza a join asegurado b using(idAsegurado) join aseguradora c using(idAseguradora)";
+			$sql = "select a.*, b.nombre as asegurado, c.nombre as aseguradora, nit, direccion from poliza a join asegurado b using(idAsegurado) join aseguradora c using(idAseguradora)";
 		else
-			$sql = "select a.*, b.nombre as asegurado, c.nombre as aseguradora from poliza a join asegurado b using(idAsegurado) join aseguradora c using(idAseguradora) where idUsuario = ".$userSesion->getId();
+			$sql = "select a.*, b.nombre as asegurado, c.nombre as aseguradora, nit, direccion from poliza a join asegurado b using(idAsegurado) join aseguradora c using(idAseguradora) where idUsuario = ".$userSesion->getId();
 			
 		$rs = $db->query($sql);
 		$datos = array();
@@ -38,8 +47,6 @@ switch($objModulo->getId()){
 				$obj->asegurado = new TAsegurado($_POST['asegurado']);
 				$obj->aseguradora = new TAseguradora($_POST['aseguradora']);
 				$obj->usuario = new TUsuario($_POST['usuario']);
-				
-				$obj->setEmision($_POST['emision']);
 				$obj->setNumero($_POST['numero']);
 				
 				$smarty->assign("json", array("band" => $obj->guardar(), "id" => $obj->getId()));

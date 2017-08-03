@@ -127,7 +127,7 @@
 						<li class="{if in_array($PAGE.modulo, array('polizas', 'reportePolizas'))}active{/if} treeview">
 							<a href="#">
 								<i class="fa fa-file"></i>
-								<span>Pólizas</span> <i class="fa fa-angle-left pull-right"></i>
+								<span>Requerimientos</span> <i class="fa fa-angle-left pull-right"></i>
 							</a>
 							<ul class="treeview-menu">
 								<li {if $PAGE.modulo eq 'polizas'}class="active"{/if}><a href="polizas"><i class="fa fa-pencil"></i> Registro</a></li>

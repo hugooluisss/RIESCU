@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-25 15:38:23
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-01 12:42:00
          compiled from "templates/plantillas/modulos/asegurados/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:4896171245977a8902b8458-40089145%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '72244b1916f1dedefa66dcf76bbcac9ecc607974' => 
     array (
       0 => 'templates/plantillas/modulos/asegurados/lista.tpl',
-      1 => 1501014961,
+      1 => 1501609315,
       2 => 'file',
     ),
   ),
@@ -34,6 +34,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<tr>
 					<th>NIT</th>
 					<th>Nombre</th>
+					<th>Dirección</th>
+					<th>Correo</th>
 					<?php if ($_smarty_tpl->tpl_vars['select']->value!=true){?>
 					<th>&nbsp;</th>
 					<?php }?>
@@ -51,12 +53,18 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 </td>
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
 </td>
+						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['direccion'];?>
+</td>
+						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['correo'];?>
+</td>
 						<?php if ($_smarty_tpl->tpl_vars['select']->value!=true){?>
 						<td style="text-align: right">
-							<button type="button" class="btn btn-success btn-xs" action="modificar" title="Modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+							<div class="btn-group">
+								<button type="button" class="btn btn-success btn-xs" action="modificar" title="Modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-pencil"></i></button>
-							<button type="button" class="btn btn-danger btn-xs" action="eliminar" title="Eliminar" identificador="<?php echo $_smarty_tpl->tpl_vars['row']->value['idAsegurado'];?>
+								<button type="button" class="btn btn-danger btn-xs" action="eliminar" title="Eliminar" identificador="<?php echo $_smarty_tpl->tpl_vars['row']->value['idAsegurado'];?>
 "><i class="fa fa-times"></i></button>
+							</div>
 						</td>
 						<?php }?>
 					</tr>

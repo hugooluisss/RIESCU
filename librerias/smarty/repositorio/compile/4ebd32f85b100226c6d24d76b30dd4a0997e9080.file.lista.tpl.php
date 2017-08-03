@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-25 15:37:28
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-01 12:26:03
          compiled from "templates/plantillas/modulos/aseguradoras/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:15095561115977ab79f0d302-88835084%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4ebd32f85b100226c6d24d76b30dd4a0997e9080' => 
     array (
       0 => 'templates/plantillas/modulos/aseguradoras/lista.tpl',
-      1 => 1501015044,
+      1 => 1501098503,
       2 => 'file',
     ),
   ),
@@ -44,10 +44,12 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['nombre'];?>
 </td>
 						<td style="text-align: right">
-							<button type="button" class="btn btn-success btn-xs" action="modificar" title="Modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+							<div class="btn-group">
+								<button type="button" class="btn btn-success btn-xs" action="modificar" title="Modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-pencil"></i></button>
-							<button type="button" class="btn btn-danger btn-xs" action="eliminar" title="Eliminar" identificador="<?php echo $_smarty_tpl->tpl_vars['row']->value['idAseguradora'];?>
+								<button type="button" class="btn btn-danger btn-xs" action="eliminar" title="Eliminar" identificador="<?php echo $_smarty_tpl->tpl_vars['row']->value['idAseguradora'];?>
 "><i class="fa fa-times"></i></button>
+							</div>
 						</td>
 					</tr>
 				<?php } ?>

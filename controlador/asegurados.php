@@ -5,10 +5,10 @@ switch($objModulo->getId()){
 		$db = TBase::conectaDB();
 		global $userSesion;
 		
-		$rs = $db->query("select * from asegurado a where nombre like '%".$_GET['term']."%' and a.visible = true");
+		$rs = $db->query("select * from asegurado a where nombre like '%".$_GET['term']."%' or nit like '%".$_GET['term']."%' and a.visible = true");
 		$datos = array();
 		while($row = $rs->fetch_assoc()){
-			$row['label'] = $row['nombre'];
+			$row['label'] = $row['nit']." - ".$row['nombre'];
 			$row['json'] = json_encode($row);
 			
 			array_push($datos, $row);
@@ -33,6 +33,17 @@ switch($objModulo->getId()){
 			case 'del':
 				$obj = new TAsegurado($_POST['id']);
 				$smarty->assign("json", array("band" => $obj->eliminar()));
+			break;
+			case 'validaNIT':
+				$db = TBase::conectaDB();
+				$rs = $db->query("select idAsegurado from asegurado where upper(nit) = upper('".$_POST['txtNIT']."')");
+				$row = $rs->fetch_assoc();
+				
+				if ($_POST['asegurado'] == '')
+					echo $row['idAsegurado'] == ''?"true":"false";
+				else{
+					echo $row['idAsegurado'] != $_POST['asegurado']?"true":"false";
+				}
 			break;
 		}
 	break;

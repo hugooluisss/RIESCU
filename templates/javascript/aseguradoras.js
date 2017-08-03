@@ -14,8 +14,7 @@ $(document).ready(function(){
 	$("#frmAdd").validate({
 		debug: true,
 		rules: {
-			txtNombre: "required",
-			txtNIT: "required"
+			txtNombre: "required"
 		},
 		wrapper: 'span', 
 		submitHandler: function(form){

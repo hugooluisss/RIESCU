@@ -1,6 +1,5 @@
 $(document).ready(function(){
 	getLista();
-	$("#txtEmision").datepicker({ dateFormat: 'yy-mm-dd' });
 	
 	$("#panelTabs li a[href=#add]").click(function(){
 		$("#frmAdd").get(0).reset();
@@ -14,8 +13,13 @@ $(document).ready(function(){
 	
 	$("#txtAsegurado").change(function(){
 		if ($(this).attr("nombre") != $(this).val()){
+			console.log($(this).attr("nombre"), $(this).val());
 			$(this).attr("identificador", "");
 			$(this).attr("nombre", "");
+			
+			$("#txtDireccionAsegurado").val("");
+			$("#txtNombreAsegurado").val("");
+			
 			console.log("Identificador del asegurado eliminado");
 		}
 	}).blur(function(){
@@ -25,31 +29,14 @@ $(document).ready(function(){
 		source: "?mod=listaAseguradosAutocomplete",
 		minLength: 3, 
 		select: function(event, ui){
-			$("#txtAsegurado").val(ui.item.nombre);
+			$("#txtAsegurado").val(ui.item.nit);
 			$("#txtAsegurado").attr("identificador", ui.item.idAsegurado);
-			$("#txtAsegurado").attr("nombre", ui.item.nombre);
-			console.log("Asegurado seleccionado", ui.item.idAsegurado);
-		}
-	});
-	
-	
-	$("#txtAseguradora").change(function(){
-		if ($(this).attr("nombre") != $(this).val()){
-			$(this).attr("identificador", "");
-			$(this).attr("nombre", "");
-			console.log("Identificador del aseguradora eliminado");
-		}
-	}).blur(function(){
-		if ($(this).attr("identificador") == '')
-			$(this).val("");
-	}).autocomplete({
-		source: "?mod=listaAseguradorasAutocomplete",
-		minLength: 3, 
-		select: function(event, ui){
-			$("#txtAseguradora").val(ui.item.nombre);
-			$("#txtAseguradora").attr("identificador", ui.item.idAseguradora);
-			$("#txtAseguradora").attr("nombre", ui.item.nombre);
-			console.log("Aseguradora seleccionado", ui.item.idAseguradora);
+			$("#txtAsegurado").attr("nombre", ui.item.nit);
+			
+			$("#txtDireccionAsegurado").val(ui.item.direccion);
+			$("#txtNombreAsegurado").val(ui.item.nombre);
+			
+			return false;
 		}
 	});
 	
@@ -57,9 +44,8 @@ $(document).ready(function(){
 		debug: true,
 		rules: {
 			txtAsegurado: "required",
-			txtAseguradora: "required",
+			selAseguradora: "required",
 			txtNumero: "required",
-			txtEmision: "required"
 		},
 		wrapper: 'span', 
 		submitHandler: function(form){
@@ -67,9 +53,8 @@ $(document).ready(function(){
 			obj.add({
 				id: $("#id").val(), 
 				asegurado: $("#txtAsegurado").attr("identificador"), 
-				aseguradora: $("#txtAseguradora").attr("identificador"), 
+				aseguradora: $("#selAseguradora").val(), 
 				usuario: $("#selUsuario").val(),
-				emision: $("#txtEmision").val(),
 				numero: $("#txtNumero").val(),
 				fn: {
 					after: function(datos){
@@ -104,16 +89,16 @@ $(document).ready(function(){
 			 
 			$("[action=modificar]").click(function(){
 				var el = jQuery.parseJSON($(this).attr("datos"));
-				
+				console.log(el);
 				$("#id").val(el.idPoliza);
-				$("#txtAsegurado").val(el.asegurado);
+				$("#txtAsegurado").val(el.nit);
 				$("#txtAsegurado").attr("nombre", el.asegurado);
 				$("#txtAsegurado").attr("identificador", el.idAsegurado);
-				$("#txtAseguradora").val(el.aseguradora);
-				$("#txtAseguradora").attr("nombre", el.aseguradora);
-				$("#txtAseguradora").attr("identificador", el.idAseguradora);
+				$("#selAseguradora").val(el.idAseguradora);
 				
-				$("#txtEmision").val(el.emision);
+				$("#txtDireccionAsegurado").val(el.direccion);
+				$("#txtNombreAsegurado").val(el.asegurado);
+				
 				$("#txtNumero").val(el.numero);
 				$("#selUsuario").val(el.idUsuario);
 				
@@ -123,6 +108,7 @@ $(document).ready(function(){
 			$("[action=cargos]").click(function(){
 				var el = jQuery.parseJSON($(this).attr("datos"));
 				$("#winCargos").attr("poliza", el.idPoliza);
+				$("#winCargos").attr("numero", el.numero)
 			});
 			
 			$("#tblDatos").DataTable({

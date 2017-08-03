@@ -12,13 +12,13 @@
 						<div class="form-group">
 							<label class="col-sm-3" for="txtRequerimiento">Pagado el</label>
 							<div class="col-sm-4">
-								<input id="txtFechaPago" name="txtFechaPago" type="date" class="form-control" value="{$smarty.now|date_format:"%Y-%m-%d"}" />
+								<input id="txtFechaPago" name="txtFechaPago" type="date" class="form-control" value="{$smarty.now|date_format:"%Y-%m-%d"}" readonly="true" />
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3" for="txtVencimiento">Entrega factura</label>
 							<div class="col-sm-4 text-center">
-								<input id="txtFechaFactura" name="txtFechaFactura" type="text" class="form-control" value="{$smarty.now|date_format:"%Y-%m-%d"}" />
+								<input id="txtFechaFactura" name="txtFechaFactura" type="text" class="form-control" value="{$smarty.now|date_format:"%Y-%m-%d"}" readonly="true"/>
 							</div>
 						</div>
 						<div class="form-group">

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-07-31 11:40:46
+<?php /* Smarty version Smarty-3.1.11, created on 2017-08-01 13:39:14
          compiled from "templates/plantillas/modulos/cargos/winPagar.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:579582019597cd98a7cb143-35440086%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3a719231ddb5334b21cf18a4a057391cc3d283af' => 
     array (
       0 => 'templates/plantillas/modulos/cargos/winPagar.tpl',
-      1 => 1501519225,
+      1 => 1501612753,
       2 => 'file',
     ),
   ),
@@ -35,14 +35,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 							<label class="col-sm-3" for="txtRequerimiento">Pagado el</label>
 							<div class="col-sm-4">
 								<input id="txtFechaPago" name="txtFechaPago" type="date" class="form-control" value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d");?>
-" />
+" readonly="true" />
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3" for="txtVencimiento">Entrega factura</label>
 							<div class="col-sm-4 text-center">
 								<input id="txtFechaFactura" name="txtFechaFactura" type="text" class="form-control" value="<?php echo smarty_modifier_date_format(time(),"%Y-%m-%d");?>
-" />
+" readonly="true"/>
 							</div>
 						</div>
 						<div class="form-group">

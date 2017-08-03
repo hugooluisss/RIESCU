@@ -9,7 +9,6 @@ TPoliza = function(){
 				"asegurado": datos.asegurado,
 				"aseguradora": datos.aseguradora, 
 				"usuario": datos.usuario,
-				"emision": datos.emision,
 				"numero": datos.numero,
 				"action": "add"
 			}, function(data){

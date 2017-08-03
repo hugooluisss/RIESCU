@@ -7,6 +7,8 @@
 				<tr>
 					<th>NIT</th>
 					<th>Nombre</th>
+					<th>Dirección</th>
+					<th>Correo</th>
 					{if $select neq true}
 					<th>&nbsp;</th>
 					{/if}
@@ -17,6 +19,8 @@
 					<tr json='{$row.json}'>
 						<td>{$row.nit}</td>
 						<td>{$row.nombre}</td>
+						<td>{$row.direccion}</td>
+						<td>{$row.correo}</td>
 						{if $select neq true}
 						<td style="text-align: right">
 							<div class="btn-group">
