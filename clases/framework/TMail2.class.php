@@ -17,11 +17,11 @@ class TMail2{
 	public $adjuntos;
 	private $tema;
 
-	public function TMail(){
+	public function TMail2(){
 		global $ini;
 		$this->destinos = array();
 		$this->contestarA = "";
-		$this->origen = array("nombre" => "VIP", "correo" => "ventas@vipsystem.store");
+		$this->origen = array("nombre" => "RIESCU", "correo" => "backup@riescu.net");
 		
 		$this->permitir = true;
 	}

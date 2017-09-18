@@ -25,6 +25,19 @@ $(document).ready(function(){
 				"autoWidth": false,
 				"order": [[ 6, "desc" ]]
 			});
+			
+			$("#exportar").click(function(){
+				$.post("rListaPolizasXLS", {
+					"inicio": $("#txtInicio").val(),
+					"fin": $("#txtFin").val()
+				}, function(data) {
+					if (data.nombre == '')
+						alert("No se pudo generar el archivo");
+					else{
+						window.open(data.nombre, 'popup');
+					}
+				}, "json");
+			});
 		});
 	}
 	

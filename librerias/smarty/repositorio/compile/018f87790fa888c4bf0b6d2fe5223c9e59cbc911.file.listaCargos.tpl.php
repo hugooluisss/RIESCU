@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2017-08-01 14:03:16
+<?php /* Smarty version Smarty-3.1.11, created on 2017-09-18 10:39:35
          compiled from "templates/plantillas/modulos/reportes/listaCargos.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:536995300597f5a32b37373-94635565%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '018f87790fa888c4bf0b6d2fe5223c9e59cbc911' => 
     array (
       0 => 'templates/plantillas/modulos/reportes/listaCargos.tpl',
-      1 => 1501614194,
+      1 => 1505749168,
       2 => 'file',
     ),
   ),
@@ -26,6 +26,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_597f5a32bf5763_40799407')) {function content_597f5a32bf5763_40799407($_smarty_tpl) {?><div class="box">
 	<div class="box-body">
+		<div class="row">
+			<div class="col-xs-12 text-left">
+				<button class="btn btn-primary" id="exportar">Exportar a excel</button>
+			</div>
+		</div>
 		<table id="tblDatos" class="table table-bordered table-hover">
 			<thead>
 				<tr>

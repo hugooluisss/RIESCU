@@ -1,5 +1,10 @@
 <div class="box">
 	<div class="box-body">
+		<div class="row">
+			<div class="col-xs-12 text-left">
+				<button class="btn btn-primary" id="exportar">Exportar a excel</button>
+			</div>
+		</div>
 		<table id="tblDatos" class="table table-bordered table-hover">
 			<thead>
 				<tr>

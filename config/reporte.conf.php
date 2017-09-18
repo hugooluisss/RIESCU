@@ -15,4 +15,11 @@ $conf['rListaPolizas'] = array(
 	'descripcion' => 'Lista de polizas',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
+	
+$conf['rListaPolizasXLS'] = array(
+	'controlador' => 'reportes.php',
+	#'vista' => 'reportes/listaCargos.tpl',
+	'descripcion' => 'Lista de polizas para exportar a excel',
+	'seguridad' => false,
+	'capa' => LAYOUT_JSON);
 ?>
